@@ -73,26 +73,29 @@ describe("ArrayList class test suite", () => {
     expect(array.allocatedSize).toEqual(BASE_ALLOCATED_SIZE);
   });
 
-  test("it should return undefined when accessing out of range values", () => {
+  test("it should throw range error when accessing out of bounds", () => {
     const array = new ArrayList();
 
     array.push(10);
 
     expect(array.length).toEqual(1);
     expect(array.getFromIndex(0)).toEqual(10);
-    expect(array.getFromIndex(1)).toBeUndefined();
-    expect(array.getFromIndex(-1)).toBeUndefined();
+
+    expect(() => array.getFromIndex(-1)).toThrowError(RangeError);
+    expect(() => array.getFromIndex(2)).toThrowError(RangeError);
+    expect(() => array.setToIndex(1, 10)).toThrowError(RangeError);
   });
 
-  test("it should not insert out of allocated range", () => {
+  test("it should clear the list", () => {
     const array = new ArrayList();
+    const RANDOM_VALUES_COUNT = 1_000;
 
-    array.setToIndex(1_000, 10);
-    expect(array.getFromIndex(1_000)).toBeUndefined();
+    const randomValues = getRandomValues(RANDOM_VALUES_COUNT);
+    for (const val of randomValues) array.push(val);
 
-    for (let i = 0; i <= 1_000; i += 1) array.push(i);
+    expect(array.length).toEqual(RANDOM_VALUES_COUNT);
 
-    array.setToIndex(1_000, 10);
-    expect(array.getFromIndex(1_000)).toEqual(10);
+    array.clear();
+    expect(array.length).toEqual(0);
   });
 });

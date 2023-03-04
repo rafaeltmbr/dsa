@@ -37,18 +37,27 @@ export class ArrayList<T> {
     return popped;
   }
 
-  public getFromIndex(index: number): T | undefined {
+  public getFromIndex(index: number): T {
     const intergerIndex = Math.round(index);
-    if (intergerIndex < 0 || intergerIndex >= this._length) return undefined;
+
+    if (intergerIndex < 0 || intergerIndex >= this._length)
+      throw new RangeError();
 
     return this.data[index];
   }
 
   public setToIndex(index: number, value: T) {
     const intergerIndex = Math.round(index);
-    if (intergerIndex < 0 || intergerIndex >= this._length) return undefined;
 
+    if (intergerIndex < 0 || intergerIndex >= this._length)
+      throw new RangeError();
     this.data[index] = value;
+  }
+
+  public clear(): void {
+    this.data = new Array(ARRAY_LIST_MIN_ALLOCATED_SIZE);
+    this._allocatedSize = ARRAY_LIST_MIN_ALLOCATED_SIZE;
+    this._length = 0;
   }
 
   private checkIfAllocatedSizeNeedToIncrease(): void {
