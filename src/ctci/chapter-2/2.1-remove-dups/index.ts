@@ -1,4 +1,4 @@
-import { LinkedList, Node } from "../../../data-structures";
+import { LinkedList, ListNode } from "../../../data-structures";
 
 /**
  * Remove duplicate elements from the given linked list
@@ -12,7 +12,7 @@ export const removeDups = <T>(list: LinkedList<T>): void => {
 
   set.add(list.head.data);
 
-  for (let prev: Node<T> = list.head; prev.next; ) {
+  for (let prev: ListNode<T> = list.head; prev.next; ) {
     if (set.has(prev.next.data)) {
       prev.next = prev.next.next;
       continue;

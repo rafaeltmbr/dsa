@@ -1,4 +1,4 @@
-import { LinkedList, Node } from "../../../data-structures";
+import { LinkedList, ListNode } from "../../../data-structures";
 
 /**
  * return the kth element to last.
@@ -20,8 +20,8 @@ export const kthToLast = <T>(
 ): T | undefined => {
   if (kth < 0) return undefined;
 
-  let p1: Node<T> | null = list.head;
-  let p2: Node<T> | null = null;
+  let p1: ListNode<T> | null = list.head;
+  let p2: ListNode<T> | null = null;
 
   for (let i = 0; p1; i += 1, p1 = p1.next)
     if (i === kth) p2 = list.head;

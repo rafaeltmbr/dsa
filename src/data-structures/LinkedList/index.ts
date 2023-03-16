@@ -1,27 +1,27 @@
-export class Node<T> {
+export class ListNode<T> {
   public data: T;
-  public next: Node<T> | null;
+  public next: ListNode<T> | null;
 
-  constructor(data: T, next: Node<T> | null = null) {
+  constructor(data: T, next: ListNode<T> | null = null) {
     this.data = data;
     this.next = next;
   }
 }
 
 export class LinkedList<T> {
-  private _head: Node<T> | null = null;
+  private _head: ListNode<T> | null = null;
 
-  public get head(): Node<T> | null {
+  public get head(): ListNode<T> | null {
     return this._head;
   }
 
   public addToHead(data: T): LinkedList<T> {
-    this._head = new Node(data, this._head);
+    this._head = new ListNode(data, this._head);
     return this;
   }
 
   public addToTail(data: T): LinkedList<T> {
-    const newNode = new Node(data);
+    const newNode = new ListNode(data);
 
     if (!this._head) {
       this._head = newNode;
