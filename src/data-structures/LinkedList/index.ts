@@ -15,6 +15,10 @@ export class LinkedList<T> {
     return this._head;
   }
 
+  public set head(node: ListNode<T> | null) {
+    this._head = node;
+  }
+
   public addToHead(data: T): LinkedList<T> {
     this._head = new ListNode(data, this._head);
     return this;
@@ -51,5 +55,19 @@ export class LinkedList<T> {
       }
 
     return this;
+  }
+
+  public toArray(): T[] {
+    const values: T[] = [];
+
+    for (let n = this._head; n; n = n.next) values.push(n.data);
+
+    return values;
+  }
+
+  public toString(): string {
+    return this.toArray()
+      .map((e) => `(${e})`)
+      .join(" -> ");
   }
 }
