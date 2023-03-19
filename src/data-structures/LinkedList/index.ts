@@ -24,6 +24,11 @@ export class LinkedList<T> {
     return this;
   }
 
+  public addArrayToHead(array: T[]): LinkedList<T> {
+    array.forEach((e) => this.addToHead(e));
+    return this;
+  }
+
   public addToTail(data: T): LinkedList<T> {
     const newNode = new ListNode(data);
 
@@ -37,6 +42,11 @@ export class LinkedList<T> {
 
     last.next = newNode;
 
+    return this;
+  }
+
+  public addArrayToTail(array: T[]): LinkedList<T> {
+    array.forEach((e) => this.addToTail(e));
     return this;
   }
 
