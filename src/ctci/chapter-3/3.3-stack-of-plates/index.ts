@@ -1,4 +1,4 @@
-import { ListNode } from "../../../../data-structures";
+import { ListNode } from "../../../data-structures";
 
 export const DEFAULT_STACK_SIZE = 4;
 
