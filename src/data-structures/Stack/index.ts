@@ -16,6 +16,10 @@ export class Stack<T> {
     return data;
   }
 
+  public peek(): T | null {
+    return this.top ? this.top.data : null;
+  }
+
   public isEmpty(): boolean {
     return !this.top;
   }
